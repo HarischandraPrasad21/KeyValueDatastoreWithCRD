@@ -1,7 +1,6 @@
 import json
 import os
 
-
 #Read funtion to read the value of key provided
 def Read(file):
   with open(file) as f:
@@ -11,17 +10,7 @@ def Read(file):
       print(key,":",res[key])
     else:
       raise Exception(key,"not found")
-    # try:
-    #   #if key is present in the file, it will print the key- value pair
-    #
-    #   print(key+" : "+res[key])
-    # except:
-    #   #if key if not present in the file, it will raise an exception
-    #   raise Exception("Key Does not exist's")
-
-
-
-
+      
 inp = input("Are you Willing to provide the file path\nif YES enter y or Y Otherwise enter n or N : " )
 if inp == "y" or inp == "Y":
   File_path = input( "please enter file path :")
@@ -42,12 +31,10 @@ elif inp == "n" or inp == "N":
     f.close()
   #checking file contains data or not
   with open(FN1) as my_file:
-
     my_file.seek(0)
     first_char = my_file.read(1)
     if not first_char:
       FileEmpty = True
-
     else:
       FileEmpty = False
 
@@ -57,8 +44,6 @@ elif inp == "n" or inp == "N":
       my_file.write(json.dumps(data))
 else:
   print("please select a valid option")
-
-
 
 print()
 print("<------------------ MENU --------------->")
@@ -71,7 +56,7 @@ if option == 1:
   # opening file and read
   with open(FN1,"r") as f:
     data = json.load(f)
-
+    
   file_size = os.path.getsize(FN1)
   #checking for the non functional requriment that the file size is less than 1gb or not, if not it will raise an error
   if file_size > 1048576:
@@ -95,14 +80,11 @@ if option == 1:
   data[Key] = Value
   with open(FN1,"w") as f:
     json.dump(data, f)
-
-
-
+    
 elif option == 2:
   Read(FN1)
 
 elif option == 3:
-
   key = input("enter the key to remove from file: ")
   with open(FN1) as f:
     data = json.load(f)
@@ -110,5 +92,3 @@ elif option == 3:
   del data[key]
   with open(FN1,"w") as f:
     json.dump(data, f)
-
-
