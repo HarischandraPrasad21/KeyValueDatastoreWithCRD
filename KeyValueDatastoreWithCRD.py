@@ -43,7 +43,7 @@ elif inp == "n" or inp == "N":
       data = {}
       my_file.write(json.dumps(data))
 else:
-  print("please select a valid option")
+  raise Exception("please select a valid option")
 
 print()
 print("<------------------ MENU --------------->")
